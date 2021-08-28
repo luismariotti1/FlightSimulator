@@ -1,17 +1,24 @@
+using FlightSimulator;
+using UnityEditor;
+using UnityEngine;
+
 namespace FlightPhysics
 {
-    public class AirplaneMenus : UnityEditor.Editor
+    public static class AirplaneMenus
     {
-        // Start is called before the first frame update
-        void Start()
+        [MenuItem("Airplane Tools/Create New Airplane")]
+        public static void CreateNewAirplane()
         {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            GameObject curSelected = Selection.activeGameObject;
+            if (curSelected)
+            {
+                AirplaneInputs inputs = curSelected.AddComponent<AirplaneInputs>();
+                AirplaneController curController = curSelected.AddComponent<AirplaneController>();
+                GameObject curCOG = new GameObject("COG");
+                curCOG.transform.SetParent(curSelected.transform);
+                curController.centerOfGravity = curCOG.transform;
+                curController.inputs = inputs;
+            }
         }
     }
 }
