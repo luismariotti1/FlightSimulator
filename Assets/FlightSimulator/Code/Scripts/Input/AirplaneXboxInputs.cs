@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FlightInputs
+namespace FlightSimulator
 {
     public class AirplaneXboxInputs : AirplaneInputs
     {
@@ -10,7 +10,7 @@ namespace FlightInputs
             pitch = Input.GetAxis("Vertical");
             roll = Input.GetAxis("Horizontal");
             yaw = Input.GetAxis("X RH Stick");
-            throttle =Input.GetAxis("X RV Stick");
+            throttle = Input.GetAxis("X RV Stick");
             
             // processes break inputs
             brake = Input.GetButton("Fire1") ? 1f : 0f;

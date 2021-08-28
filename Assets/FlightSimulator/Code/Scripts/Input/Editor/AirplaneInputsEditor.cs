@@ -1,8 +1,7 @@
-using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace FlightInputs
+namespace FlightSimulator
 {
     [CustomEditor(typeof(AirplaneInputs))]
     public class AirplaneInputsEditor : Editor
