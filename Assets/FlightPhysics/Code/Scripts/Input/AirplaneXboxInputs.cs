@@ -1,19 +1,32 @@
 using UnityEngine;
 
-namespace FlightPhysics.Code.Scripts.Input
+namespace FlightInputs
 {
-    public class AirplaneXboxInputs : MonoBehaviour
+    public class AirplaneXboxInputs : AirplaneInputs
     {
-        AirplaneInputs input;
-        // Start is called before the first frame update
-        void Start()
+        protected override void HandleInput()
         {
-        }
+            // processes main inputs
+            pitch = Input.GetAxis("Vertical");
+            roll = Input.GetAxis("Horizontal");
+            yaw = Input.GetAxis("X RH Stick");
+            throttle =Input.GetAxis("X RV Stick");
+            
+            // processes break inputs
+            brake = Input.GetButton("Fire1") ? 1f : 0f;
 
-        // Update is called once per frame
-        void Update()
-        {
-        
+            // processes flaps inputs
+            if (Input.GetButtonDown("X R Bumper"))
+            {
+                flaps += 1;
+            }
+            if (Input.GetButtonDown("X L Bumper"))
+            {
+                flaps -= 1;
+            }
+
+            flaps = Mathf.Clamp(flaps, 0, maxFlapIncrements);
         }
+        
     }
 }
