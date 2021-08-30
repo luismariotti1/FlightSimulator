@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FlightSimulator;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ namespace FlightPhysics
         [Header("Base Airplane Properties")] public AirplaneInputs inputs;
         public Transform centerOfGravity;
         [Tooltip("Weight is in kg")] public float weight = 360f;
+        [Header("Engines")] public List<AirplaneEngine> engines = new List<AirplaneEngine>();
+        [Header("Wheels")] public List<AirplaneWheels> wheels = new List<AirplaneWheels>();
 
         #endregion
 
@@ -26,6 +29,17 @@ namespace FlightPhysics
                     rb.centerOfMass = centerOfGravity.localPosition;
                 }
             }
+
+            if (wheels != null)
+            {
+                if (wheels.Count > 0)
+                {
+                    foreach (var wheel in wheels)
+                    {
+                        wheel.initWheel();
+                    }
+                }
+            }
         }
 
         #endregion
@@ -34,16 +48,28 @@ namespace FlightPhysics
 
         protected override void HandlePhysics()
         {
-            HandleEngines();
-            HandleAerodynamics();
-            HandleSteering();
-            HandleBrakes();
-            HandleAltitude();
+            if (inputs)
+            {
+                HandleEngines();
+                HandleAerodynamics();
+                HandleSteering();
+                HandleBrakes();
+                HandleAltitude();
+            }
         }
 
         void HandleEngines()
         {
-            
+            if (engines != null)
+            {
+                if (engines.Count > 0)
+                {
+                    foreach (var engine in engines)
+                    {
+                        rb.AddForce(engine.CalculateForce(inputs.Throttle));
+                    }
+                }
+            }
         }
 
         void HandleAerodynamics()
