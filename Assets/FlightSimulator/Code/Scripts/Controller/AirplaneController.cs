@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using FlightSimulator;
 using UnityEngine;
 
-namespace FlightPhysics
+namespace FlightSimulator
 {
     public class AirplaneController : BaseRigidbodyController
     {
@@ -34,9 +33,10 @@ namespace FlightPhysics
             {
                 if (wheels.Count > 0)
                 {
+                    
                     foreach (var wheel in wheels)
                     {
-                        wheel.initWheel();
+                        wheel.InitWheel();
                     }
                 }
             }

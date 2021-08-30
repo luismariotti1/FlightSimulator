@@ -2,7 +2,7 @@ using FlightSimulator;
 using UnityEditor;
 using UnityEngine;
 
-namespace FlightPhysics
+namespace FlightSimulator
 {
     public static class AirplaneMenus
     {

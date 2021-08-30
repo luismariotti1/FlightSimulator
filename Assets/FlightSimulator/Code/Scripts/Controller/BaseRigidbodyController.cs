@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FlightPhysics
+namespace FlightSimulator
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(AudioSource))]

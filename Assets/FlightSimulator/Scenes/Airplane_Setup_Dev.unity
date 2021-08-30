@@ -611,6 +611,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5677793495087411722}
     - target: {fileID: 1147155949, guid: 71ad15f0dc3a5c84ea60c283e790de4e, type: 3}
+      propertyPath: wheels.Array.data[3]
+      value: 
+      objectReference: {fileID: 5677793495087411724}
+    - target: {fileID: 1147155949, guid: 71ad15f0dc3a5c84ea60c283e790de4e, type: 3}
+      propertyPath: wheels.Array.data[4]
+      value: 
+      objectReference: {fileID: 5677793495087411723}
+    - target: {fileID: 1147155949, guid: 71ad15f0dc3a5c84ea60c283e790de4e, type: 3}
+      propertyPath: wheels.Array.data[5]
+      value: 
+      objectReference: {fileID: 5677793495087411722}
+    - target: {fileID: 1147155949, guid: 71ad15f0dc3a5c84ea60c283e790de4e, type: 3}
       propertyPath: engines.Array.data[0]
       value: 
       objectReference: {fileID: 1463448927}
@@ -618,6 +630,10 @@ PrefabInstance:
       propertyPath: maxForce
       value: 3000
       objectReference: {fileID: 0}
+    - target: {fileID: 2813796836784511948, guid: 71ad15f0dc3a5c84ea60c283e790de4e, type: 3}
+      propertyPath: propeller
+      value: 
+      objectReference: {fileID: 5677793495087411726}
     - target: {fileID: 2813796836784511948, guid: 71ad15f0dc3a5c84ea60c283e790de4e, type: 3}
       propertyPath: powerCurve.m_Curve.Array.data[0].inSlope
       value: 2
@@ -734,5 +750,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 171ef96891de3b542bdd349e03fac293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5677793495087411725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5677793493109464719, guid: 71ad15f0dc3a5c84ea60c283e790de4e, type: 3}
+  m_PrefabInstance: {fileID: 5677793495087411718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5677793495087411726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677793495087411725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97ab5f92c79459386fcc46e268fdfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

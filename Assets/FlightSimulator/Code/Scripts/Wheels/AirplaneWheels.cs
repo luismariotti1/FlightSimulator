@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace FlightSimulator
@@ -23,7 +22,7 @@ namespace FlightSimulator
 
         #region Custom Methods
 
-        public void initWheel()
+        public void InitWheel()
         {
             if (wheelCol)
             {
