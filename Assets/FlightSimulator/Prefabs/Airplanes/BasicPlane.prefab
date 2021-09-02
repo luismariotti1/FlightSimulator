@@ -429,6 +429,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97ab5f92c79459386fcc46e268fdfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minQuadRpm: 300
+  minTextureSwap: 600
+  mainProp: {fileID: 5677793493109464717}
+  blurredProp: {fileID: 6043368969950218540}
+  blurredPropMat: {fileID: 2100000, guid: 067c6a76ae1159e46a96d7041205adcf, type: 2}
+  propellerLevel1: {fileID: 0}
+  propellerLevel2: {fileID: 0}
 --- !u!1 &5677793493135143197
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,8 +515,9 @@ GameObject:
   - component: {fileID: 5677793494880344572}
   - component: {fileID: 1147155952}
   - component: {fileID: 1147155951}
-  - component: {fileID: 1147155949}
-  - component: {fileID: 1380129639}
+  - component: {fileID: 649687529409994283}
+  - component: {fileID: 8338778936198443596}
+  - component: {fileID: 1463192300651931048}
   m_Layer: 0
   m_Name: BasicPlane
   m_TagString: Untagged
@@ -647,7 +655,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1147155949
+--- !u!114 &649687529409994283
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -659,16 +667,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f997b027aa0d429cb59fcd60d0431e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputs: {fileID: 1380129639}
+  characteristics: {fileID: 8338778936198443596}
+  inputs: {fileID: 1463192300651931048}
   centerOfGravity: {fileID: 2450805910599554796}
-  weight: 540
+  weight: 360
   engines:
   - {fileID: 2813796836784511948}
   wheels:
   - {fileID: 5677793495087411724}
   - {fileID: 5677793495087411723}
   - {fileID: 5677793495087411722}
---- !u!114 &1380129639
+--- !u!114 &8338778936198443596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677793494880344575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea5944676ab4936841d1f1e25b4631b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardSpeed: 0
+  kmh: 0
+  maxLiftPower: 800
+--- !u!114 &1463192300651931048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -680,6 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070f1137cfae62d4c8e5e2ccc23953d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throttleSpeed: 0.1
 --- !u!1 &6043368969950218540
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +716,6 @@ GameObject:
   - component: {fileID: 8243647467140444116}
   - component: {fileID: 8460978860022600153}
   - component: {fileID: 2566699696196386478}
-  - component: {fileID: 8817348389975947119}
   m_Layer: 0
   m_Name: Blur_propeller
   m_TagString: Untagged
@@ -762,20 +786,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8817348389975947119
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6043368969950218540}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &6761423743850800592
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,6 +1001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IndiePixel_Airplane
       objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: 0a5b6c85101505647b87da703d0ae99a, type: 3}
+      propertyPath: m_Name
+      value: Main_propeller
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 0a5b6c85101505647b87da703d0ae99a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.999828
@@ -1069,6 +1083,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a5b6c85101505647b87da703d0ae99a, type: 3}
+--- !u!1 &5677793493109464717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100024, guid: 0a5b6c85101505647b87da703d0ae99a, type: 3}
+  m_PrefabInstance: {fileID: 5677793493109561397}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5677793493109949103 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400026, guid: 0a5b6c85101505647b87da703d0ae99a, type: 3}

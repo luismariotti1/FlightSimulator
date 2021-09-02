@@ -5,14 +5,15 @@ namespace FlightSimulator
     public class AirplaneInputs : MonoBehaviour
     {
         #region Variables
-
         protected float pitch = 0f;
         protected float roll = 0f;
         protected float yaw = 0f;
         protected float throttle = 0f;
 
+        private float throttleSpeed = 0.2f;
         protected KeyCode brakeKey = KeyCode.Space;
         protected float brake = 0f;
+        protected float stickyThrottle;
         
 
         protected int maxFlapIncrements = 2;
@@ -28,6 +29,7 @@ namespace FlightSimulator
         public float Throttle => throttle;
         public float Flaps => flaps;
         public float Brake => brake;
+        public float StickyThrottle => stickyThrottle;
 
         #endregion
 
@@ -48,8 +50,11 @@ namespace FlightSimulator
             // processes main inputs
             pitch = Input.GetAxis("Vertical");
             roll = Input.GetAxis("Horizontal");
+            StickyThrottleControl();
+            
             yaw = Input.GetAxis("Yaw");
             throttle =Input.GetAxis("Throttle");
+            
 
             // processes break inputs
             brake = Input.GetKey(brakeKey) ? 1f : 0f;
@@ -67,6 +72,13 @@ namespace FlightSimulator
             flaps = Mathf.Clamp(flaps, 0, maxFlapIncrements);
         }
 
+        protected void StickyThrottleControl()
+        {
+            // Increment gradually the speed and sticky it
+            stickyThrottle += throttle * throttleSpeed * Time.deltaTime;
+            stickyThrottle = Mathf.Clamp(StickyThrottle, 0f, 1f);
+        }
+        
         #endregion
     }
 }

@@ -4,14 +4,22 @@ namespace FlightSimulator
 {
     public class AirplaneXboxInputs : AirplaneInputs
     {
+        #region Variables
+        
+        #endregion
+        
+        #region Custom Methods
+
         protected override void HandleInput()
         {
             // processes main inputs
             pitch = Input.GetAxis("Vertical");
             roll = Input.GetAxis("Horizontal");
+            StickyThrottleControl();
+            
             yaw = Input.GetAxis("X RH Stick");
             throttle = Input.GetAxis("X RV Stick");
-            
+
             // processes break inputs
             brake = Input.GetButton("Fire1") ? 1f : 0f;
 
@@ -20,6 +28,7 @@ namespace FlightSimulator
             {
                 flaps += 1;
             }
+
             if (Input.GetButtonDown("X L Bumper"))
             {
                 flaps -= 1;
@@ -27,6 +36,7 @@ namespace FlightSimulator
 
             flaps = Mathf.Clamp(flaps, 0, maxFlapIncrements);
         }
-        
+
+        #endregion
     }
 }

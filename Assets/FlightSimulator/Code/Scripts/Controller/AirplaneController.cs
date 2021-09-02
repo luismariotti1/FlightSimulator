@@ -3,12 +3,14 @@ using UnityEngine;
 
 namespace FlightSimulator
 {
+    [RequireComponent(typeof(AirplaneCharacteristics))]
     public class AirplaneController : BaseRigidbodyController
     {
         #region Variables
-
         [Header("Base Airplane Properties")] public AirplaneInputs inputs;
+        public AirplaneCharacteristics characteristics;
         public Transform centerOfGravity;
+       
         [Tooltip("Weight is in kg")] public float weight = 360f;
         [Header("Engines")] public List<AirplaneEngine> engines = new List<AirplaneEngine>();
         [Header("Wheels")] public List<AirplaneWheels> wheels = new List<AirplaneWheels>();
@@ -20,6 +22,7 @@ namespace FlightSimulator
         protected override void Start()
         {
             base.Start();
+            
             if (rb)
             {
                 rb.mass = weight;
@@ -27,8 +30,15 @@ namespace FlightSimulator
                 {
                     rb.centerOfMass = centerOfGravity.localPosition;
                 }
+
+                characteristics = GetComponent<AirplaneCharacteristics>();
+                if (characteristics)
+                {
+                    characteristics.InitCharacteristics(rb);
+                }
             }
 
+            // Init the wheels to not stuck the plane
             if (wheels != null)
             {
                 if (wheels.Count > 0)
@@ -51,7 +61,7 @@ namespace FlightSimulator
             if (inputs)
             {
                 HandleEngines();
-                HandleAerodynamics();
+                HandleCharacteristics();
                 HandleSteering();
                 HandleBrakes();
                 HandleAltitude();
@@ -60,21 +70,25 @@ namespace FlightSimulator
 
         void HandleEngines()
         {
+            // Apply the engine force to the plane
             if (engines != null)
             {
                 if (engines.Count > 0)
                 {
                     foreach (var engine in engines)
                     {
-                        rb.AddForce(engine.CalculateForce(inputs.Throttle));
+                        rb.AddForce(engine.CalculateForce(inputs.StickyThrottle));
                     }
                 }
             }
         }
 
-        void HandleAerodynamics()
+        void HandleCharacteristics()
         {
-            
+            if (characteristics)
+            {
+                characteristics.UpdateCharacteristics();
+            }
         }
 
         void HandleSteering()
