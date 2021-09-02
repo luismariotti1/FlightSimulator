@@ -10,7 +10,7 @@ namespace FlightSimulator
         protected float yaw = 0f;
         protected float throttle = 0f;
 
-        private float throttleSpeed = 0.2f;
+        private float throttleSpeed = 0.15f;
         protected KeyCode brakeKey = KeyCode.Space;
         protected float brake = 0f;
         protected float stickyThrottle;
